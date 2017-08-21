@@ -4,13 +4,6 @@ Created on Mon Aug 21 14:33:07 2017
 
 @author: shsubram
 """
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Aug 16 14:42:40 2017
-
-@author: shsubram
-"""
 class longestPalindrome:
     def __init__(self,s):
         self.s = s
