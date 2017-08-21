@@ -23,21 +23,17 @@ class longestPalindrome:
             self.longest = self.s
         elif start >= end:
             self.memo[start][end] = True
-            return True
         elif len(s[start:end+1]) == 1:
             self.memo[start][end] = True
             if len(self.longest) <= 1:
                 self.longest = self.s[start]
-            return True
         elif len(s[start:end+1]) == 2:
             if s[start] == s[end]:
                 self.memo[start][end] = True
                 if len(self.longest) <= 1:
                     self.longest = self.s[start:end+1]
-                return True
             else:
                 self.memo[start][end] = False
-                return False
         else:
             for i in range(start,end):
                 for j in range(end,start-1,-1):
