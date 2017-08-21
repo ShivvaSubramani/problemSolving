@@ -2,7 +2,7 @@
 """
 Created on Wed Aug 16 14:42:40 2017
 
-@author: Shivva Subramani
+@author: shsubram
 """
 class longestPalindrome:
     def __init__(self,s):
@@ -37,8 +37,13 @@ class longestPalindrome:
         else:
             for i in range(start,end):
                 for j in range(end,start-1,-1):
+                    if self.memo[i][j] != None:
+                        continue
                     if self.memo[i+1][j-1] == None:
-                       self.longestPalindromicSubString(s,i+1,j-1)
+                        if i+1 >= j-1:
+                            self.memo[i+1][j-1] = True
+                        else:
+                            self.longestPalindromicSubString(s,i+1,j-1)
                     if self.memo[i+1][j-1] and s[i] == s[j]:
                         self.memo[i][j] = True
                         if len(self.longest) < len(self.s[i:j+1]):
