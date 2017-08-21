@@ -2,7 +2,7 @@
 """
 Created on Wed Aug 16 14:42:40 2017
 
-@author: shsubram
+@author: Shivva Subramani
 """
 class longestPalindrome:
     def __init__(self,s):
