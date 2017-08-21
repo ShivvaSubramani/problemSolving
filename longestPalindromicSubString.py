@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Aug 21 14:33:07 2017
+Created on Wed Aug 16 14:42:40 2017
 
 @author: shsubram
 """
@@ -13,6 +13,8 @@ class longestPalindrome:
             self.memo[_] = [None] * len(s)
     def getLongestPalindromicSubString(self):
         self.longestPalindromicSubString(self.s,0,len(self.s)-1)
+        if self.s and len(self.longest) <= 1:
+            self.longest = self.s[-1]
         return self.longest
     def longestPalindromicSubString(self,s,start,end):
         if self.s == "":
@@ -24,7 +26,7 @@ class longestPalindrome:
             return True
         elif len(s[start:end+1]) == 1:
             self.memo[start][end] = True
-            if self.longest == "":
+            if len(self.longest) <= 1:
                 self.longest = self.s[start]
             return True
         elif len(s[start:end+1]) == 2:
@@ -47,6 +49,20 @@ class longestPalindrome:
                             self.longest = self.s[i:j+1]
                     else:
                         self.memo[i][j] = False
-                
-myClass = longestPalindrome("baabaaaa")
-print myClass.getLongestPalindromicSubString()        
+try:
+    myStr = input("Enter a string:\n")
+    if type(myStr) != str:
+        raise TypeError("Entered input is not a string")
+    myClass = longestPalindrome(myStr)
+    palindrome = myClass.getLongestPalindromicSubString()  
+    if palindrome:
+        print "Longest palindrome in %s is %s."%(myStr,palindrome)
+    else:
+        print "Entered string has no palindromic substring."
+except TypeError as err:
+    print "Exception caught: ", err.args[0]
+except:
+    print "Unknow error occured, can't proceed."
+    
+    
+      
